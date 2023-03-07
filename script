@@ -1,0 +1,43 @@
+#!/bin/bash
+echo "Enter the option (maven, gradle, ant)"
+read option
+            case $option in
+              "maven")
+                echo "welcome to maven"
+                echo "current working directory is"
+                pwd
+                echo "Identifying POM.XML file"
+                File=POM.XML
+                if test -f "$File"; then
+                        echo "$File exists"
+                echo "Mavan build started"
+                mvn clean package
+                echo "Maven build completed"
+
+                else
+               echo "$File doesn't exists"
+               exit 0
+                fi
+              ;;
+             "gradle")
+                echo "welcome to gradle"
+                echo "current working directory is"
+                pwd
+                echo "Identifying build.gradle file"
+                File=build.gradle
+                if test -f "$File"; then
+                        echo "$File exists"
+                echo "Gradle build started"
+                ./gradlew clean build
+                echo "Gradle build completed"
+
+                else
+               echo "$File doesn't exists"
+               exit 0
+                fi
+              ;;
+              *)
+               echo "invalid input"
+              ;;
+          esac
+
